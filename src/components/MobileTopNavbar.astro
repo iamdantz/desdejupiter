@@ -2,7 +2,6 @@
 import { Icon } from 'astro-icon/components';
 import ThemeToggle from './ThemeToggle.astro';
 import { socialLinks, SITE_TITLE } from '@config';
-import Logo from './Logo.astro';
 ---
 
 <nav
@@ -10,7 +9,6 @@ import Logo from './Logo.astro';
 >
   <div class="flex items-center gap-2">
     <a href="/" class="flex items-center gap-2">
-      <Logo size={24} />
       <span class="text-primary text-lg font-bold">{SITE_TITLE}</span>
     </a>
   </div>
