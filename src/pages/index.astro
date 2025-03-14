@@ -1,11 +1,229 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="My Blog - Home">
+  <div class="flex h-full w-full items-center justify-center px-0 sm:px-4 md:mt-0">
+    <!-- Presentation Card with reduced padding for mobile -->
+    <div
+      class="sm:bg-fill-alt flex h-[80vh] w-full flex-col justify-center rounded-lg bg-transparent p-3 shadow-none sm:p-8 md:p-10 lg:p-12"
+    >
+      <div class="px-1 text-left sm:px-4">
+        <h1 class="mb-4 flex items-center gap-2 text-2xl font-bold sm:mb-6 sm:text-3xl md:text-4xl">
+          <svg
+            class="h-8 w-8 flex-shrink-0 text-gray-400 sm:h-10 sm:w-10 md:h-12 md:w-12 dark:text-gray-500"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M10 6L15.2929 11.2929C15.6834 11.6834 15.6834 12.3166 15.2929 12.7071L10 18"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+          <span class="text-base">¡Hey! Soy Dantz 🖖</span>
+        </h1>
+
+        <!-- Role text with fixed height container and larger text -->
+        <h2 class="text-muted mb-8 text-3xl sm:mb-10 sm:text-4xl md:text-5xl lg:text-6xl">
+          <div class="typewriter-container relative inline-flex h-[1.2em]">
+            <span id="typed-text" class="gradient-text inline-block"></span>
+            <span class="typing-cursor absolute top-0 right-[-0.5ch] inline-block"></span>
+          </div>
+        </h2>
+        <div class="max-w-prose">
+          <p class="text-base leading-relaxed sm:text-lg">
+            Especialista en JavaScript y tecnologías cloud. Me dedico a crear soluciones simples a
+            problemas complejos. Comparto conocimientos sobre arquitectura cloud, diseño de
+            software, IA y liderazgo. 🇻🇪 🇲🇽
+          </p>
+          <!-- Current role with improved styling -->
+          <p class="text-muted my-6 block text-sm font-medium tracking-wide sm:text-base">
+            Actualmente DevOps Engineer en
+            <a
+              href="https://hanufit.com/"
+              class="text-muted hover:text-primary underline decoration-dotted underline-offset-4 transition-colors duration-200"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              HANU
+            </a>
+          </p>
+          <!-- CTA Buttons -->
+          <div class="mt-8 flex flex-col gap-4 sm:mt-10 sm:flex-row sm:items-center">
+            <a
+              href="https://www.linkedin.com/in/heydantz/"
+              class="cta-primary flex items-center justify-center rounded-lg px-6 py-3 text-center font-medium transition-all duration-200 sm:px-8"
+            >
+              <span>Conectar</span>
+              <svg class="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </a>
+            <a
+              href="/blog"
+              class="cta-secondary flex items-center justify-center px-2 py-1 text-center transition-all duration-200"
+            >
+              <span class="hidden">Read my blog</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </Layout>
+
+<style>
+  .typing-cursor {
+    width: 0.125em;
+    height: 1.1em;
+    background-color: currentColor;
+    display: inline-block;
+    vertical-align: text-bottom;
+    margin-left: 1px;
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+  /* Fixed height typewriter container to prevent layout shifts */
+  .typewriter-container {
+    min-height: 1.2em;
+    display: inline-flex;
+    position: relative;
+  }
+
+  /* Gradient text effect */
+  .gradient-text {
+    background: linear-gradient(
+      135deg,
+      var(--color-primary-light) 0%,
+      var(--color-primary) 50%,
+      var(--color-primary-dark) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    padding-right: 0.5ch; /* Space for cursor without affecting layout */
+  }
+
+  /* Ensure text doesn't collapse when empty */
+  #typed-text:empty::before {
+    content: '\00a0'; /* Non-breaking spaces */
+    visibility: hidden;
+    display: inline-block;
+  }
+
+  /* CTA Buttons Styles */
+  .cta-primary {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    color: white;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--color-primary);
+  }
+
+  .cta-primary:hover,
+  .cta-primary:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    filter: brightness(1.05);
+  }
+
+  .cta-primary:active {
+    transform: translateY(0);
+  }
+
+  .cta-secondary {
+    color: var(--color-text);
+    position: relative;
+  }
+
+  .cta-secondary::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-primary);
+    transition: width 0.3s ease;
+  }
+
+  .cta-secondary:hover::after,
+  .cta-secondary:focus::after {
+    width: 100%;
+  }
+
+  /* Dark mode adjustments */
+  :global(.dark) .cta-primary {
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  }
+
+  :global(.dark) .cta-secondary {
+    color: var(--color-text-light);
+  }
+
+  :global(.dark) .cta-secondary::after {
+    background-color: var(--color-primary-light);
+  }
+</style>
+
+<script>
+  // Improved typing animation with better timing
+  const roles = ['Web Developer', 'DevOps Engineer', 'Tech Lead'];
+  const typedText = document.getElementById('typed-text');
+  let currentRole = 0;
+
+  async function animateText() {
+    const role = roles[currentRole];
+
+    // Typing effect - slightly faster
+    for (let i = 0; i <= role.length; i++) {
+      if (typedText) typedText.textContent = role.substring(0, i);
+      await new Promise((r) => setTimeout(r, 50)); // Faster typing (was 100)
+    }
+
+    // Longer pause when fully typed
+    await new Promise((r) => setTimeout(r, 1500)); // Increased from 2000 to 3000
+
+    // Slower deleting effect
+    for (let i = role.length; i >= 0; i--) {
+      if (typedText) typedText.textContent = role.substring(0, i);
+      await new Promise((r) => setTimeout(r, 50)); // Slower deletion (was 60)
+    }
+
+    // Longer pause between roles
+    await new Promise((r) => setTimeout(r, 50)); // Increased from 500 to 800
+
+    // Move to next role or reset to first
+    currentRole = (currentRole + 1) % roles.length;
+
+    // Continue the animation
+    animateText();
+  }
+
+  // Start the animation when the DOM is fully loaded
+  document.addEventListener('DOMContentLoaded', animateText);
+
+  // Restart animation if needed when returning to the page
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible' && !typedText?.textContent) {
+      animateText();
+    }
+  });
+</script>

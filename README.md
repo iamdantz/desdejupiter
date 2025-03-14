@@ -1,16 +1,11 @@
-# Astro Starter Kit: Basics
+# ✨ Desde Júpiter
 
-```sh
-npm create astro@latest -- --template basics
-```
+![Astro Badge](https://img.shields.io/badge/Built%20with-Astro-FF5D01?style=for-the-badge&logo=astro&logoColor=white)
+![Status](https://img.shields.io/badge/Status-In%20Development-yellow?style=for-the-badge)
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## 📖 About
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+This is a blog project built using [Astro](https://astro.build), a modern static site generator that delivers lightning-fast performance. Astro allows you to use your favorite JavaScript frameworks while shipping minimal JavaScript to the browser.
 
 ## 🚀 Project Structure
 
@@ -43,6 +38,21 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-## 👀 Want to learn more?
+## 🔧 Development Environment
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+This project was developed using:
+- VSCode
+- GitHub Copilot PRO (Copilot Edits with Claude 3.7 Sonnet)
+
+## 📝 Disclaimer
+
+This project was created following the Vibe Coding methodology, as detailed in [Peter Wong's paper](https://x.com/peterwong_xyz/status/1898090027873452542). Vibe Coding is an approach that emphasizes:
+
+1. Starting with an aesthetic/vibe as inspiration
+2. Working through iterations with AI assistance
+3. Refining the development process based on mood and creative intuition
+4. Focusing on the overall "feel" of the product alongside functional requirements
+
+## 👀 Learn More
+
+Feel free to check [Astro's documentation](https://docs.astro.build) or join their [Discord server](https://astro.build/chat).

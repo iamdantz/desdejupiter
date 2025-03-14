@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --orange-50: #fff7ed;
+  --orange-100: #ffedd5;
+  --orange-200: #fed7aa;
+  --orange-300: #fdba74;
+  --orange-400: #fb923c;
+  --orange-500: #f97316;
+  --orange-600: #ea580c;
+  --orange-700: #c2410c;
+  --orange-800: #9a3412;
+  --orange-900: #7c2d12;
+  
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+
+  --color-fill: var(--gray-50);
+  --color-fill-alt: var(--gray-100);
+  --color-fill-emphasis: var(--gray-200);
+  --color-base: var(--gray-900);
+  --color-muted: var(--gray-700);
+  --color-subtle: var(--gray-500);
+  --color-border: var(--gray-300);
+  --color-border-focus: var(--orange-500);
+
+  --color-primary: var(--orange-500);
+  --color-primary-light: var(--orange-400);
+  --color-primary-dark: var(--orange-600);
+  --color-primary-contrast: white;
+
+  --color-success: var(--green-500);
+  --color-warning: var(--yellow-500);
+  --color-error: var(--red-500);
+  --color-info: var(--blue-500);
+
+  /* Font family variables */
+  --font-sans: 'Rubik', sans-serif;
+  --font-mono: 'Roboto Mono', monospace; 
+}
+
+@layer base {
+  /* Apply font families to elements */
+  html {
+    font-family: var(--font-mono);
+  }
+
+  /* sans elements: navigation, buttons, headings h1-h3 */
+  h1, h2, h3, 
+  nav, button, .button, 
+  header, footer,
+  label,
+  [class*='cta-'] {
+    font-family: var(--font-sans);
+  }
+
+  /* Text, copy, prose and smaller headings */
+  body, p, 
+  h4, h5, h6, 
+  input, textarea,
+  .prose, article, 
+  blockquote {
+    font-family: var(--font-mono);
+  }
+
+  /* Utility classes for explicit font usage */
+  .font-sans {
+    font-family: var(--font-sans);
+  }
+
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+
+  .dark {
+    --color-fill: #1E1E1E;
+    --color-fill-alt: #2A2A2A;
+    --color-fill-emphasis: #333333;
+    --color-base: #E1E1E1;
+    --color-muted: #BBBBBB;
+    --color-subtle: #999999;
+    --color-border: #444444;
+    --color-border-focus: var(--orange-400);
+    
+    --color-primary: var(--orange-400);
+    --color-primary-light: var(--orange-300);
+    --color-primary-dark: var(--orange-500);
+    --color-primary-contrast: #1E1E1E;
+    
+    --color-success: var(--green-400, #4ade80);
+    --color-warning: var(--yellow-400, #facc15);
+    --color-error: var(--red-400, #f87171);
+    --color-info: var(--blue-400, #60a5fa);
+  }
+}

@@ -1,0 +1,33 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<button
+  class="theme-toggle text-muted hover:text-primary ml-4 transition-colors"
+  aria-label="Toggle dark mode"
+>
+  <Icon name="tabler:sun-high-filled" size={24} class="hidden dark:block" />
+  <Icon name="tabler:moon-filled" size={24} class="block dark:hidden" />
+</button>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const themeToggles = document.querySelectorAll('.theme-toggle');
+
+    if (themeToggles.length > 0) {
+      const toggleTheme = () => {
+        const isDark = document.documentElement.classList.toggle('dark');
+        const theme = isDark ? 'dark' : 'light';
+        localStorage.setItem('theme', theme);
+      };
+
+      themeToggles.forEach((toggle) => {
+        toggle.addEventListener('click', toggleTheme);
+        toggle.addEventListener('touchend', (e) => {
+          e.preventDefault();
+          toggleTheme();
+        });
+      });
+    }
+  });
+</script>
