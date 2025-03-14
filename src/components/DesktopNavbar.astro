@@ -2,11 +2,15 @@
 import { Icon } from 'astro-icon/components';
 import ThemeToggle from './ThemeToggle.astro';
 import { menuItems, socialLinks, SITE_TITLE } from '@config';
+import Logo from './Logo.astro';
 ---
 
 <nav class="border-border bg-fill hidden grid-cols-3 items-center border-b px-6 py-4 md:grid">
-  <div class="flex items-center justify-start">
-    <a href="/" class="text-primary text-xl font-bold">{SITE_TITLE}</a>
+  <div class="flex items-center justify-start gap-2">
+    [<a href="/" class="flex items-center gap-2">
+      <Logo size={32} />
+      <span class="text-primary text-xl font-bold">{SITE_TITLE}</span>
+    </a>]
   </div>
   <div class="flex items-center justify-center">
     {
