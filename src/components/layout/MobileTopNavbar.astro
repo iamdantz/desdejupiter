@@ -6,9 +6,10 @@ import { socialLinks, SITE_TITLE } from '@config';
 
 <nav
   class="border-border bg-fill/80 fixed top-0 right-0 left-0 z-50 flex items-center justify-between border-b px-4 py-3 backdrop-blur-md md:hidden"
+  aria-label="Mobile top navigation"
 >
   <div class="flex items-center gap-2">
-    <a href="/" class="flex items-center gap-2">
+    <a href="/" class="flex items-center gap-2" aria-label="Home page">
       <span class="text-primary text-lg font-bold">{SITE_TITLE}</span>
     </a>
   </div>
@@ -23,7 +24,7 @@ import { socialLinks, SITE_TITLE } from '@config';
           class="hover:text-primary dark:hover:text-primary text-gray-600 transition-colors dark:text-gray-400"
           aria-label={link.platform}
         >
-          <Icon name={link.icon} size={20} />
+          <Icon name={link.icon} size={20} aria-hidden="true" />
         </a>
       ))
     }

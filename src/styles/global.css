@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
+@plugin "@tailwindcss/typography";
 
 @theme {
   --orange-50: #fff7ed;
@@ -25,6 +26,7 @@
   --gray-800: #1f2937;
   --gray-900: #111827;
 
+  /* Light mode semantic variables */
   --color-fill: var(--gray-50);
   --color-fill-alt: var(--gray-100);
   --color-fill-emphasis: var(--gray-200);
@@ -39,20 +41,37 @@
   --color-primary-dark: var(--orange-600);
   --color-primary-contrast: white;
 
-  --color-success: var(--green-500);
-  --color-warning: var(--yellow-500);
-  --color-error: var(--red-500);
-  --color-info: var(--blue-500);
+  --color-success: #22c55e; /* green-500 */
+  --color-warning: #eab308; /* yellow-500 */
+  --color-error: #ef4444; /* red-500 */
+  --color-info: #3b82f6; /* blue-500 */
 
   /* Font family variables */
-  --font-sans: 'Rubik', sans-serif;
-  --font-mono: 'Roboto Mono', monospace; 
+  --font-sans: 'Rubik', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Roboto Mono', ui-monospace, SFMono-Regular, monospace; 
+
+  /* Spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
 }
 
 @layer base {
   /* Apply font families to elements */
   html {
     font-family: var(--font-mono);
+    scroll-behavior: smooth;
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
 
   /* sans elements: navigation, buttons, headings h1-h3 */
@@ -82,6 +101,17 @@
     font-family: var(--font-mono);
   }
 
+  /* Focus styles for better accessibility */
+  :focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+  }
+
+  /* Better form controls */
+  input, textarea, select {
+    @apply bg-fill border border-border rounded px-3 py-2 focus:border-primary focus:ring-1 focus:ring-primary;
+  }
+
   .dark {
     --color-fill: #1E1E1E;
     --color-fill-alt: #2A2A2A;
@@ -97,9 +127,9 @@
     --color-primary-dark: var(--orange-500);
     --color-primary-contrast: #1E1E1E;
     
-    --color-success: var(--green-400, #4ade80);
-    --color-warning: var(--yellow-400, #facc15);
-    --color-error: var(--red-400, #f87171);
-    --color-info: var(--blue-400, #60a5fa);
+    --color-success: #4ade80; /* green-400 */
+    --color-warning: #facc15; /* yellow-400 */
+    --color-error: #f87171; /* red-400 */
+    --color-info: #60a5fa; /* blue-400 */
   }
 }

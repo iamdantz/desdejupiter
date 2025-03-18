@@ -1,0 +1,63 @@
+---
+import { Icon } from 'astro-icon/components';
+import ThemeToggle from './ThemeToggle.astro';
+import { menuItems, socialLinks, SITE_TITLE } from '@config';
+import Logo from './Logo.astro';
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav
+  class="border-border bg-fill hidden grid-cols-3 items-center border-b px-6 py-4 md:grid"
+  aria-label="Desktop navigation"
+>
+  <div class="flex items-center justify-start gap-2">
+    <a href="/" class="flex items-center gap-2" aria-label="Home page">
+      <Logo size={32} />
+      <span class="text-primary text-xl font-bold">{SITE_TITLE}</span>
+    </a>
+  </div>
+  <div class="flex items-center justify-center">
+    {
+      menuItems
+        .filter((item) => item.active)
+        .map((item) => {
+          const isActive =
+            currentPath === item.url || (item.url !== '/' && currentPath.startsWith(item.url));
+
+          return (
+            <a
+              href={item.url}
+              class:list={[
+                'px-4 transition-colors',
+                isActive
+                  ? 'text-primary dark:text-primary-light font-medium'
+                  : 'hover:text-primary dark:hover:text-primary text-gray-800 dark:text-gray-200',
+              ]}
+              aria-current={isActive ? 'page' : undefined}
+            >
+              {item.title}
+            </a>
+          );
+        })
+    }
+  </div>
+
+  <div class="flex items-center justify-end space-x-4">
+    {
+      socialLinks.map((link) => (
+        <a
+          href={link.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:text-primary dark:hover:text-primary text-gray-600 transition-colors dark:text-gray-400"
+          aria-label={link.platform}
+        >
+          <Icon name={link.icon} size={24} aria-hidden="true" />
+        </a>
+      ))
+    }
+
+    <ThemeToggle />
+  </div>
+</nav>

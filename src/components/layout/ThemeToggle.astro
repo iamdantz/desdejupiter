@@ -5,9 +5,10 @@ import { Icon } from 'astro-icon/components';
 <button
   class="theme-toggle text-muted hover:text-primary ml-4 transition-colors"
   aria-label="Toggle dark mode"
+  title="Toggle dark/light mode"
 >
-  <Icon name="tabler:sun-high-filled" size={24} class="hidden dark:block" />
-  <Icon name="tabler:moon-filled" size={24} class="block dark:hidden" />
+  <Icon name="tabler:sun-high-filled" size={24} class="hidden dark:block" aria-hidden="true" />
+  <Icon name="tabler:moon-filled" size={24} class="block dark:hidden" aria-hidden="true" />
 </button>
 
 <script>

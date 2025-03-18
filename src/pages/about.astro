@@ -1,0 +1,203 @@
+---
+import Layout from '@layouts/Layout.astro';
+import ProfileHeader from '@components/about/ProfileHeader.astro';
+import { PROFILE, socialLinks } from '@config';
+import Prose from '@components/common/Prose.astro';
+---
+
+<Layout
+  title="About Me | Desde Júpiter Blog"
+  description="Learn more about me, my background, skills, and interests"
+>
+  <div class="mx-auto max-w-4xl px-4 py-12 sm:px-6">
+    <ProfileHeader
+      name={PROFILE.name}
+      title={PROFILE.title}
+      imageSrc={PROFILE.imageSrc}
+      location={PROFILE.location}
+      socialLinks={socialLinks}
+      shortBio={PROFILE.shortBio}
+    />
+    <Prose>
+      <h1>Sobre Mí</h1>
+      <p>
+        Nací en <strong>Cumaná</strong>, una pequeña ciudad del estado Sucre en Venezuela. Si bien
+        es un lugar con sus propios desafíos, sigue siendo el <em>rincón que me vio crecer</em> y donde
+        comenzó mi fascinación por la tecnología.
+      </p>
+
+      <div
+        class="border-primary-500 my-8 rounded-lg border-l-4 bg-neutral-50 p-6 dark:bg-neutral-800"
+      >
+        <p class="!my-0">
+          <em
+            >"Mi historia con la tecnología comenzó prácticamente desde que tengo memoria. Siempre
+            tuve alguna consola de videojuegos, aunque fuera una Nintendo pirata"</em
+          > 😅
+        </p>
+      </div>
+
+      <p>
+        A los <strong>6 o 7 años</strong>, por pura curiosidad, desarmé una de mis consolas para ver
+        qué había dentro. Obviamente no entendía nada de lo que veía, pero <mark
+          >esa curiosidad por saber cómo funcionaban las cosas se quedó conmigo</mark
+        > 🕹️
+      </p>
+
+      <p>
+        Por esa misma época llegó la primera computadora a casa. Pasaba horas explorando contenido
+        en Microsoft Encarta, navegando con una intuición natural. Rápidamente me convertí en el <strong
+          >soporte técnico de la familia</strong
+        > 🤓
+      </p>
+
+      <p>
+        Desde entonces, supe que quería dedicarme a las computadoras, aunque el camino exacto aún no
+        estaba claro 🤔
+      </p>
+
+      <div class="my-8 flex items-center space-x-4">
+        <div class="h-px flex-1 bg-neutral-300 dark:bg-neutral-700"></div>
+        <span class="text-sm font-medium text-neutral-500 dark:text-neutral-400"
+          >MI CAMINO TÉCNICO</span
+        >
+        <div class="h-px flex-1 bg-neutral-300 dark:bg-neutral-700"></div>
+      </div>
+
+      <p>
+        Mi pasión por la programación se desarrollaba en paralelo. Desde la secundaria aprovechaba
+        mi tiempo libre para experimentar creando sitios web. Estamos hablando de la época en que se
+        usaban <em>imágenes transparentes para lograr esquinas redondeadas</em> o se maquetaba usando
+        tablas HTML. ¿Se acuerdan de DreamWeaver 8? 👴
+      </p>
+
+      <p>
+        📡 Me gradué en <strong>Telecomunicaciones</strong>, una decisión práctica considerando el
+        limitado mercado laboral para programación en mi ciudad. Al menos en esa época.
+      </p>
+
+      <p>
+        Aunque nunca ejercí formalmente en ese campo, no me arrepiento. Los fundamentos que aprendí
+        han resultado valiosos en mi trayectoria. Sin mencionar los amigos que hice en el camino.
+      </p>
+
+      <p>
+        <strong>2019</strong> marcó mi <em>"antes y después"</em>. Obtuve una beca para estudiar en <a
+          href="https://platzi.com"
+          target="_blank"
+          class="text-primary dark:text-primary font-medium hover:underline">Platzi</a
+        > 💚. Lo que había sido un hobby se transformó en mi profesión.
+      </p>
+
+      <p>
+        Ese mismo año conseguí mi <strong>primer trabajo como desarrollador frontend</strong>. Fue
+        un verdadero reto claro está. Sin formación formal y con habilidades limitadas, enfrenté una
+        curva de aprendizaje extremadamente empinada. Afortunadamente, conté con el apoyo de todo el
+        equipo 🎯
+      </p>
+
+      <div
+        class="bg-primary-50 dark:bg-primary-900/30 border-primary-500 my-8 rounded-lg border-l-4 p-6"
+      >
+        <p class="!my-1 font-medium">🌟 Lección clave:</p>
+        <p class="!my-1">
+          Esta experiencia me enseñó la importancia de la perseverancia y el trabajo colaborativo.
+        </p>
+      </div>
+
+      <p>Desde entonces, mi trayectoria ha sido diversa y muy satisfactoria:</p>
+
+      <ul class="space-y-3">
+        <li>
+          ✅ He trabajado en <strong>startups</strong> (con todo lo que implica: features experimentales,
+          deadlines ajustados, equipos pequeños)
+        </li>
+        <li>
+          ✅ He cubierto roles desde <em>frontend</em> hasta <em>backend</em>
+        </li>
+        <li>✅ Fui <strong>Tech Leader</strong> de un equipo de 5-6 desarrolladores</li>
+      </ul>
+
+      <p>
+        Ahora busco especializarme en <strong>DevOps</strong>, un área que me permite integrar mis
+        conocimientos de telecomunicaciones con el desarrollo de software ☁️
+      </p>
+
+      <div class="my-8 flex items-center space-x-4">
+        <div class="h-px flex-1 bg-neutral-300 dark:bg-neutral-700"></div>
+        <span class="text-sm font-medium text-neutral-500 dark:text-neutral-400"
+          >DESAFÍOS PERSONALES</span
+        >
+        <div class="h-px flex-1 bg-neutral-300 dark:bg-neutral-700"></div>
+      </div>
+
+      <p>
+        En cada nuevo rol o empresa, el <strong>síndrome del impostor</strong> hacía su aparición. Especialmente
+        en mi primer trabajo, donde mis conocimientos eran casi nulos y dudaba constantemente de mi capacidad
+        para cumplir con las responsabilidades asignadas 🫠
+      </p>
+
+      <p>
+        Con el tiempo, aprendí a controlarlo y a enfrentar cualquier desafío sin miedo, tenga o no
+        las habilidades requeridas inicialmente. Descubrí que mi verdadera fortaleza está en mi
+        <mark>capacidad para aprender continuamente</mark> 🚀
+      </p>
+
+      <p>
+        Creo firmemente en la importancia de <strong>entender los fundamentos</strong>. Cuando
+        comprendes el porqué de las cosas, no importa qué herramientas o software surjan, seguirás
+        siendo relevante mientras sigas aprendiendo a resolver problemas complejos mediante
+        soluciones simples.
+      </p>
+
+      <p>
+        <em
+          >Entender las bases es más importante que nunca en esta era de Inteligencia Artificial.</em
+        >
+      </p>
+
+      <p>Cuando no estoy inmerso en líneas de código, disfruto de:</p>
+
+      <ul class="grid list-none grid-cols-1 gap-3 !pl-0 md:grid-cols-2">
+        <li class="flex items-center rounded-lg bg-neutral-100 p-4 dark:bg-neutral-800">
+          <span class="mr-3 text-2xl">🎮</span> Videojuegos
+        </li>
+        <li class="flex items-center rounded-lg bg-neutral-100 p-4 dark:bg-neutral-800">
+          <span class="mr-3 text-2xl">🎬</span> Películas
+        </li>
+        <li class="flex items-center rounded-lg bg-neutral-100 p-4 dark:bg-neutral-800">
+          <span class="mr-3 text-2xl">✍️</span> Crear contenido en mi blog
+        </li>
+        <li class="flex items-center rounded-lg bg-neutral-100 p-4 dark:bg-neutral-800">
+          <span class="mr-3 text-2xl">🧪</span> Experimentar en mi laboratorio
+        </li>
+      </ul>
+
+      <p>
+        👫 Hace dos años me casé con <strong>la mejor mujer del mundo</strong> y emigré a <strong
+          >México</strong
+        >, iniciando un nuevo capítulo en mi vida personal y profesional con nuevos desafíos y
+        oportunidades.
+      </p>
+
+      <h2>Un Consejo Para Quien Empieza 🌱</h2>
+      <div class="rounded-lg border-l-4 border-green-500 bg-green-50 p-6 dark:bg-green-900/20">
+        <p class="!my-2">
+          Si estás comenzando en este camino, especialmente de forma autodidacta como yo, mi consejo
+          es: <strong>no te frustres</strong>. El inicio es muy pesado, y sin una brújula clara es
+          fácil confundirse.
+        </p>
+        <p class="!my-2">
+          Tómate un momento para <em>respirar, descansar, y meditar</em> sobre el rumbo que llevas. La
+          vida no es solo trabajar. <mark
+            >Está bien si no eres productivo durante un fin de semana.</mark
+          >
+        </p>
+      </div>
+
+      <hr class="my-12 border-t-2 border-dashed border-neutral-300 dark:border-neutral-700" />
+
+      <p class="text-center text-xl italic">Aún sigo escribiendo mi historia...</p>
+    </Prose>
+  </div>
+</Layout>

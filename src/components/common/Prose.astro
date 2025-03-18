@@ -1,0 +1,82 @@
+---
+interface Props {
+  /**
+   * HTML element to use as container
+   * @default 'div'
+   */
+  as?: 'div' | 'article' | 'section';
+
+  /**
+   * Additional CSS classes to apply
+   */
+  className?: string;
+
+  /**
+   * Whether to apply top margin
+   * @default true
+   */
+  withMarginTop?: boolean;
+}
+
+const { as: Element = 'div', className = '', withMarginTop = true } = Astro.props;
+---
+
+<Element
+  class:list={[
+    // Base prose styles
+    'prose prose-lg dark:prose-invert mx-auto max-w-none',
+
+    // Conditional margin
+    withMarginTop ? 'mt-12' : '',
+
+    // Headings
+    'prose-headings:text-neutral-900 dark:prose-headings:text-white',
+    'prose-h1:text-4xl prose-h1:font-extrabold prose-h1:mb-8 prose-h1:leading-tight sm:prose-h1:text-5xl',
+    'prose-h2:text-3xl prose-h2:font-bold prose-h2:mt-12 prose-h2:mb-6 prose-h2:leading-snug',
+    'prose-h3:text-2xl prose-h3:font-semibold prose-h3:mt-10 prose-h3:mb-4',
+    'prose-h4:text-xl prose-h4:font-medium prose-h4:mt-8 prose-h4:mb-3',
+    'prose-h5:text-lg prose-h5:font-medium prose-h5:mt-6 prose-h5:mb-2',
+    'prose-h6:text-base prose-h6:font-medium prose-h6:mt-6 prose-h6:mb-2',
+
+    // Paragraphs and lists
+    'prose-p:text-lg prose-p:leading-relaxed prose-p:my-8 prose-p:text-neutral-800 dark:prose-p:text-neutral-200',
+    'prose-ul:my-6 prose-ul:pl-6',
+    'prose-ol:my-6 prose-ol:pl-6',
+    'prose-li:my-2 prose-li:leading-relaxed',
+
+    // Block elements
+    'prose-blockquote:my-8 prose-blockquote:pl-6 prose-blockquote:italic prose-blockquote:text-neutral-700 dark:prose-blockquote:text-neutral-300 prose-blockquote:border-l-4 prose-blockquote:border-neutral-300 dark:prose-blockquote:border-neutral-700',
+    'prose-img:my-8 prose-img:rounded-lg',
+
+    // Code blocks
+    'prose-code:rounded prose-code:bg-neutral-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:text-neutral-800 dark:prose-code:bg-neutral-800 dark:prose-code:text-neutral-200',
+    'prose-pre:bg-neutral-900 dark:prose-pre:bg-neutral-800 prose-pre:overflow-x-auto prose-pre:rounded-lg prose-pre:p-4',
+    'prose-pre:my-8',
+
+    // Tables
+    'prose-table:my-8 prose-table:w-full prose-table:border-collapse',
+    'prose-th:border prose-th:border-neutral-300 dark:prose-th:border-neutral-700 prose-th:p-3 prose-th:bg-neutral-100 dark:prose-th:bg-neutral-800 prose-th:text-left',
+    'prose-td:border prose-td:border-neutral-300 dark:prose-td:border-neutral-700 prose-td:p-3',
+
+    // Links
+    'prose-a:text-primary-600 dark:prose-a:text-primary-400 prose-a:font-medium prose-a:underline-offset-2 hover:prose-a:text-primary-500',
+
+    // Formatting
+    '[&_mark]:rounded [&_mark]:bg-yellow-100 [&_mark]:p-0.5 [&_mark]:dark:bg-yellow-800/50',
+    '[&_strong]:text-neutral-900 [&_strong]:dark:text-white',
+    '[&_em]:text-neutral-700 [&_em]:dark:text-neutral-300',
+    '[&_hr]:border-neutral-300 [&_hr]:dark:border-neutral-700',
+    '[&_mark]:text-neutral-900 [&_mark]:dark:text-yellow-100',
+
+    // Additional classes
+    className,
+  ]}
+>
+  <slot />
+</Element>
+
+<style>
+  :global(.prose mark) {
+    padding: 0 0.25rem;
+  }
+</style>

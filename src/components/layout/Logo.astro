@@ -4,55 +4,48 @@ interface Props {
   class?: string;
 }
 
-const { size = 40, class: className = "" } = Astro.props;
+const { size = 40, class: className = '' } = Astro.props;
 ---
 
-<svg 
-  xmlns="http://www.w3.org/2000/svg" 
-  viewBox="0 0 100 100" 
-  width={size} 
-  height={size} 
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 100 100"
+  width={size}
+  height={size}
   class={`inline-block ${className}`}
   aria-label="Jupiter Tech Logo"
 >
   <defs>
     <!-- Simple jupiter fill -->
     <linearGradient id="jupiterBody" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="var(--jupiter-light, #fb923c)" />
-      <stop offset="100%" stop-color="var(--jupiter-dark, #ea580c)" />
+      <stop offset="0%" stop-color="var(--jupiter-light, #fb923c)"></stop>
+      <stop offset="100%" stop-color="var(--jupiter-dark, #ea580c)"></stop>
     </linearGradient>
-    
+
     <!-- Single band gradient -->
     <linearGradient id="band" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="var(--band-color, #c2410c)" stop-opacity="0.1" />
-      <stop offset="50%" stop-color="var(--band-color, #c2410c)" stop-opacity="0.5" />
-      <stop offset="100%" stop-color="var(--band-color, #c2410c)" stop-opacity="0.1" />
+      <stop offset="0%" stop-color="var(--band-color, #c2410c)" stop-opacity="0.1"></stop>
+      <stop offset="50%" stop-color="var(--band-color, #c2410c)" stop-opacity="0.5"></stop>
+      <stop offset="100%" stop-color="var(--band-color, #c2410c)" stop-opacity="0.1"></stop>
     </linearGradient>
-    
+
     <!-- Terminal spot - solid color instead of gradient -->
     <linearGradient id="terminalSpot" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="var(--spot-color, #b91c1c)" />
-      <stop offset="100%" stop-color="var(--spot-color, #b91c1c)" />
+      <stop offset="0%" stop-color="var(--spot-color, #b91c1c)"></stop>
+      <stop offset="100%" stop-color="var(--spot-color, #b91c1c)"></stop>
     </linearGradient>
   </defs>
-  
+
   <!-- Main Jupiter body - simplified -->
-  <circle 
-    cx="50" 
-    cy="50" 
-    r="45" 
-    fill="url(#jupiterBody)" 
-    class="transition-colors"
-  />
-  
+  <circle cx="50" cy="50" r="45" fill="url(#jupiterBody)" class="transition-colors"></circle>
+
   <!-- Single prominent band -->
-  <path 
-    d="M5,50 Q50,55 95,50" 
-    stroke="url(#band)" 
-    stroke-width="20" 
+  <path
+    d="M5,50 Q50,55 95,50"
+    stroke="url(#band)"
+    stroke-width="20"
     fill="none"
-    class="transition-colors"
-  />
+    class="transition-colors"></path>
 </svg>
 
 <style>
@@ -70,7 +63,7 @@ const { size = 40, class: className = "" } = Astro.props;
     --band-color: #9a3412;
     --spot-color: #991b1b;
   }
-  
+
   /* Make logo more visible on mobile */
   @media (max-width: 640px) {
     svg {

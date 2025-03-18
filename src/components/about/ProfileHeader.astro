@@ -1,0 +1,74 @@
+---
+import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
+
+interface Props {
+  name: string;
+  title: string;
+  imageSrc: any;
+  location: string;
+  socialLinks: {
+    platform: string;
+    url: string;
+    icon: string;
+  }[];
+  shortBio: string;
+}
+
+const { name, title, imageSrc, location, socialLinks, shortBio } = Astro.props;
+---
+
+<header class="mb-16">
+  <div class="flex flex-col md:flex-row gap-8 items-start">
+    <div class="flex-shrink-0 relative">
+      <!-- Stack effect with pseudo elements -->
+      <div class="absolute inset-0 rounded-lg bg-primary-200 dark:bg-primary-900 -right-3 -bottom-3 z-0"></div>
+      <div class="absolute inset-0 rounded-lg bg-primary-100 dark:bg-primary-800 -right-1.5 -bottom-1.5 z-0"></div>
+      <!-- Main image with z-index to appear on top -->
+      <div class="relative z-10">
+        <Image 
+          src={imageSrc} 
+          alt={`Photo of ${name}`} 
+          class="rounded-lg w-48 h-48 object-cover shadow-md"
+          width="192"
+          height="192"
+          loading="eager"
+        />
+      </div>
+    </div>
+    
+    <div>
+      <h1 class="text-3xl md:text-4xl font-bold mb-2 text-neutral-900 dark:text-white">
+        {name}
+      </h1>
+      
+      <p class="text-xl text-primary-600 dark:text-primary-400 mb-4">
+        {title}
+      </p>
+      
+      <div class="flex items-center gap-2 text-neutral-600 dark:text-neutral-300 mb-4">
+        <Icon name="tabler:map-pin-filled" size={24} class="text-gray-600 dark:text-gray-400" />
+        <span>{location}</span>
+      </div>
+      
+      <p class="mb-6 text-neutral-700 dark:text-neutral-200">
+        {shortBio}
+      </p>
+      
+      <div class="flex gap-4">
+        {socialLinks.map(({ platform, url, icon }) => (
+          <a 
+            href={url}
+            target="_blank" 
+            rel="noopener noreferrer"
+            aria-label={`Visit ${platform} profile`}
+            class="hover:text-primary dark:hover:text-primary text-gray-600 transition-colors dark:text-gray-400"
+          >
+            <span class="sr-only">{platform}</span>
+            <Icon name={icon} size={24} />
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</header>
