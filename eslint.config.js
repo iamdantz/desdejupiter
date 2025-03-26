@@ -1,43 +1,49 @@
-import eslint from '@eslint/js';
-import tseslint from 'typescript-eslint';
+/* eslint-disable prettier/prettier */
+import { defineConfig } from 'eslint/config'
 import eslintPluginAstro from 'eslint-plugin-astro'
+import eslintPluginPrettier from 'eslint-plugin-prettier'
+import eslintPluginTypeScript from '@typescript-eslint/eslint-plugin'
+import eslintParserTypeScript from '@typescript-eslint/parser'
+import astroEslintParser from 'astro-eslint-parser'
+import js from '@eslint/js'
 import neostandard from 'neostandard'
-import prettierPlugin from 'eslint-plugin-prettier';
 
-export default [
-    ...eslint.configs.recommended,
-    ...tseslint.configs.recommended,
-    ...neostandard(),
-    ...eslintPluginAstro.configs.recommended,
-    ...prettierPlugin.configs.recommended,
-    {
-        languageOptions: {
-            parser: tseslint.parser,
-            parserOptions: {
-                ecmaVersion: 'latest',
-                sourceType: 'module',
-                project: './tsconfig.json',
-            },
-        },
-        plugins: {
-            '@typescript-eslint': tseslint.plugin,
-        },
-        rules: {
-            'prettier/prettier': 'error',
-        },
-        ignores: ['dist/**', 'node_modules/**'],
+export default defineConfig([
+  ...neostandard(),
+  {
+    ignores: ['dist', 'node_modules'],
+  },
+  {
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      parser: eslintParserTypeScript,
+      parserOptions: {
+        project: './tsconfig.json',
+      },
     },
-    {
-        files: ['**/*.astro'],
-        rules: {
-            'prettier/prettier': 'error',
-        },
-        languageOptions: {
-            parser: astroPlugin.parser,
-            parserOptions: {
-                parser: tseslint.parser,
-                extraFileExtensions: ['.astro'],
-            },
-        },
+    plugins: {
+      '@typescript-eslint': eslintPluginTypeScript,
+      prettier: eslintPluginPrettier,
+      astro: eslintPluginAstro,
+      js,
     },
-]
+    rules: {
+      ...eslintPluginPrettier.configs.recommended.rules,
+      'prettier/prettier': 'error',
+    },
+  },
+  {
+    files: ['*.astro'],
+    languageOptions: {
+      parser: astroEslintParser,
+      parserOptions: {
+        parser: '@typescript-eslint/parser',
+        extraFileExtensions: ['.astro'],
+      },
+    },
+    rules: {
+      'prettier/prettier': 'error',
+    },
+  },
+])

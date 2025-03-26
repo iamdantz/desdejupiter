@@ -1,0 +1,41 @@
+---
+import { Icon } from 'astro-icon/components'
+import HeaderLink from '@ui/units/NavLink.astro'
+import HeaderIcon from '@ui/units/NavIcon.astro'
+import { SITE_TITLE, MENU, SOCIALS } from '@/consts'
+---
+
+<header>
+  <nav class="bg-fill grid grid-cols-2 border-b border-gray-300 px-6 py-4 md:grid-cols-3">
+    <section class="justify-start">
+      <a href="/">
+        <h2 class="text-primary text-xl font-bold">{SITE_TITLE}</h2>
+      </a>
+    </section>
+    <section class="hidden justify-center gap-6 md:flex">
+      {
+        MENU.filter((item) => item.active).map((item) => {
+          return <HeaderLink href={item.url}>{item.title}</HeaderLink>
+        })
+      }
+    </section>
+    <section class="justify-end gap-4">
+      {
+        SOCIALS.map((item) => {
+          return (
+            <HeaderIcon href={item.url}>
+              <Icon name={item.icon} size={24} />
+            </HeaderIcon>
+          )
+        })
+      }
+    </section>
+  </nav>
+</header>
+
+<style>
+  nav > section:nth-child(1),
+  nav > section:nth-child(3) {
+    @apply flex items-center;
+  }
+</style>

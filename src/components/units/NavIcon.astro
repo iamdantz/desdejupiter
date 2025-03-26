@@ -1,0 +1,16 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+type Props = HTMLAttributes<'a'>
+
+const { href, class: className, ...props } = Astro.props
+---
+
+<a
+  href={href}
+  target="_blank"
+  class:list={['hover:text-primary text-gray-800 transition-colors dark:text-gray-200', className]}
+  {...props}
+>
+  <slot />
+</a>

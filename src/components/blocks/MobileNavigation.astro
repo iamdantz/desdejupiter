@@ -1,0 +1,23 @@
+---
+import { Icon } from 'astro-icon/components'
+import HeaderLink from '@ui/units/NavLink.astro'
+import { MENU } from '@/consts'
+---
+
+<nav
+  class="bg-fill fixed right-0 bottom-0 left-0 z-10 grid grid-cols-4 items-center justify-items-center border-t border-gray-300 px-6 py-4 md:hidden"
+>
+  {
+    MENU.filter((item) => item.active).map((item) => {
+      return (
+        <HeaderLink
+          href={item.url}
+          class:list={['flex', 'flex-col', 'items-center', 'gap-1', 'text-xs']}
+        >
+          <Icon name={item.icon} size={18} />
+          {item.title}
+        </HeaderLink>
+      )
+    })
+  }
+</nav>
