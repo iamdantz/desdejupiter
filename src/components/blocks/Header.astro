@@ -1,12 +1,15 @@
 ---
 import { Icon } from 'astro-icon/components'
-import HeaderLink from '@ui/units/NavLink.astro'
-import HeaderIcon from '@ui/units/NavIcon.astro'
+import NavLink from '@ui/units/NavLink.astro'
+import NavIcon from '@ui/units/NavIcon.astro'
+import ThemeToggle from '@ui/units/ThemeToggle.astro'
 import { SITE_TITLE, MENU, SOCIALS } from '@/consts'
 ---
 
 <header>
-  <nav class="bg-fill grid grid-cols-2 border-b border-gray-300 px-6 py-4 md:grid-cols-3">
+  <nav
+    class="bg-fill grid grid-cols-2 border-b border-gray-300 px-6 py-4 transition-colors md:grid-cols-3"
+  >
     <section class="justify-start">
       <a href="/">
         <h2 class="text-primary text-xl font-bold">{SITE_TITLE}</h2>
@@ -15,7 +18,7 @@ import { SITE_TITLE, MENU, SOCIALS } from '@/consts'
     <section class="hidden justify-center gap-6 md:flex">
       {
         MENU.filter((item) => item.active).map((item) => {
-          return <HeaderLink href={item.url}>{item.title}</HeaderLink>
+          return <NavLink href={item.url}>{item.title}</NavLink>
         })
       }
     </section>
@@ -23,12 +26,13 @@ import { SITE_TITLE, MENU, SOCIALS } from '@/consts'
       {
         SOCIALS.map((item) => {
           return (
-            <HeaderIcon href={item.url}>
+            <NavIcon href={item.url}>
               <Icon name={item.icon} size={24} />
-            </HeaderIcon>
+            </NavIcon>
           )
         })
       }
+      <ThemeToggle />
     </section>
   </nav>
 </header>

@@ -1,0 +1,35 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import { Icon } from 'astro-icon/components'
+
+type Props = HTMLAttributes<'button'>
+
+const { class: className, ...props } = Astro.props
+---
+
+<button
+  id="theme-toggle"
+  class:list={['hover:text-primary text-gray-800 transition-colors dark:text-gray-200', className]}
+  {...props}
+>
+  <Icon name="hugeicons:sun-02" size={24} class="dark:hidden" />
+  <Icon name="hugeicons:moon-02" size={24} class="hidden dark:block" />
+</button>
+
+<script>
+  const toggle = document.getElementById('theme-toggle')
+
+  const toggleTheme = (): void => {
+    const isDark = document.documentElement.classList.toggle('dark')
+    const theme = isDark ? 'dark' : 'light'
+    localStorage.setItem('theme', theme)
+  }
+
+  if (toggle) {
+    toggle.addEventListener('click', toggleTheme)
+    toggle.addEventListener('touchend', (e) => {
+      e.preventDefault()
+      toggleTheme()
+    })
+  }
+</script>

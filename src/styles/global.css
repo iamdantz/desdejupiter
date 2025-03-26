@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
 	--color-primary: oklch(70.487% 0.18672 47.604);
@@ -19,23 +19,6 @@
 	--color-fill: var(--color-slate-50);
 }
 
-[data-theme="dark"] {
-	--color-primary: oklch(75.764% 0.15904 55.934);
-	--color-primary-50: oklch(98.042% 0.01266 63.925);
-	--color-primary-100: oklch(95.124% 0.0288 60.769);
-	--color-primary-200: oklch(89.883% 0.06265 61.413);
-	--color-primary-300: oklch(84.965% 0.09736 60.397);
-	--color-primary-400: oklch(80.077% 0.13013 58.404);
-	--color-primary-500: oklch(75.764% 0.15904 55.934);
-	--color-primary-600: oklch(70.59% 0.18949 48.53);
-	--color-primary-700: oklch(58.842% 0.15566 49.35);
-	--color-primary-800: oklch(46.48% 0.1199 50.793);
-	--color-primary-900: oklch(33.057% 0.08205 52.82);
-	--color-primary-950: oklch(25.744% 0.06132 56.09);
-
-	--color-fill: var(--color-slate-900);
-}
-
 @layer base {
 	html {
 		scroll-behavior: smooth;
@@ -44,5 +27,21 @@
 		html {
 			scroll-behavior: auto;
 		}
+	}
+	html.dark {
+		--color-primary: oklch(75.764% 0.15904 55.934);
+		--color-primary-50: oklch(98.042% 0.01266 63.925);
+		--color-primary-100: oklch(95.124% 0.0288 60.769);
+		--color-primary-200: oklch(89.883% 0.06265 61.413);
+		--color-primary-300: oklch(84.965% 0.09736 60.397);
+		--color-primary-400: oklch(80.077% 0.13013 58.404);
+		--color-primary-500: oklch(75.764% 0.15904 55.934);
+		--color-primary-600: oklch(70.59% 0.18949 48.53);
+		--color-primary-700: oklch(58.842% 0.15566 49.35);
+		--color-primary-800: oklch(46.48% 0.1199 50.793);
+		--color-primary-900: oklch(33.057% 0.08205 52.82);
+		--color-primary-950: oklch(25.744% 0.06132 56.09);
+
+		--color-fill: var(--color-slate-900);
 	}
 }
