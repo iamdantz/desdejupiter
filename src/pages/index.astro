@@ -4,6 +4,7 @@ import Header from '@ui/blocks/Header.astro'
 import Footer from '@ui/Footer.astro'
 import { SITE_TITLE, SITE_DESCRIPTION } from '@/consts'
 import MobileNavigation from '@/components/blocks/MobileNavigation.astro'
+import { Icon } from 'astro-icon/components'
 ---
 
 <!doctype html>
@@ -11,41 +12,64 @@ import MobileNavigation from '@/components/blocks/MobileNavigation.astro'
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
-  <body>
+  <body class="grid h-screen grid-rows-3">
     <Header />
-    <main>
-      <h1>🧑‍🚀 Hello, Astronaut!</h1>
-      <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-        template serves as a lightweight, minimally-styled starting point for anyone looking to build
-        a personal website, blog, or portfolio with Astro.
-      </p>
-      <p>
-        This template comes with a few integrations already configured in your
-        <code>astro.config.mjs</code> file. You can customize your setup with
-        <a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-        React, or Vue to your project.
-      </p>
-      <p>Here are a few ideas on how to get started with the template:</p>
-      <ul>
-        <li>Edit this page in <code>src/pages/index.astro</code></li>
-        <li>Edit the site header items in <code>src/components/Header.astro</code></li>
-        <li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-        <li>Check out the included blog posts in <code>src/content/blog/</code></li>
-        <li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-      </ul>
-      <p>
-        Have fun! If you get stuck, remember to
-        <a href="https://docs.astro.build/">read the docs</a>
-        or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-      </p>
-      <p>
-        Looking for a blog template with a bit more personality? Check out
-        <a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-        by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-      </p>
+    <main class="@container/main flex h-full w-full flex-col items-center justify-center">
+      <section class="flex h-[80vh] w-full items-center justify-center p-8 md:p-12 lg:p-14">
+        <div class="prose dark:prose-invert prose-w flex flex-col gap-8 text-center">
+          <span class="text-2xl font-bold md:text-4xl lg:text-5xl">
+            ¡Hey! Soy <strong>Dantz</strong> 🖖
+          </span>
+          <p class="mt-0 mb-0 text-lg">
+            Me dedico a crear soluciones simples a problemas complejos. Comparto conocimientos sobre
+            arquitectura cloud, diseño de software, IA y liderazgo. 🇻🇪 🇲🇽
+          </p>
+
+          <p class="mt-0 mb-0 text-lg">
+            Actualmente <em>DevOps Engineer</em> en
+            <a
+              href="https://hanufit.com/"
+              class="hover:text-primary underline decoration-dotted underline-offset-4"
+              target="_blank"
+            >
+              HANU
+            </a>
+          </p>
+
+          <div class="flex flex-col items-center justify-center gap-4 text-lg md:flex-row">
+            <a
+              href="https://www.linkedin.com/in/heydantz/"
+              class="cta-primary w-[50%] rounded px-6 py-3 text-center font-medium no-underline"
+            >
+              <span>Conectar</span>
+            </a>
+          </div>
+        </div>
+      </section>
     </main>
-    <Footer />
     <MobileNavigation />
   </body>
 </html>
+
+<style>
+  .cta-primary {
+    background: linear-gradient(135deg, var(--color-primary-500) 0%, var(--color-primary-400) 100%);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--color-primary);
+  }
+
+  .cta-primary:hover,
+  .cta-primary:focus {
+    filter: brightness(1.05);
+  }
+
+  main::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, var(--color-primary) 0%, transparent 100%);
+    opacity: 0.15;
+    z-index: -1;
+  }
+</style>
