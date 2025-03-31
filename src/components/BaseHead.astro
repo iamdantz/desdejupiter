@@ -55,4 +55,21 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
 <!-- Theme Preference -->
-<script src="../lib/Theme.ts"></script>
+<script is:inline>
+  ;(function () {
+    function getThemePreference() {
+      if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+        return localStorage.getItem('theme') || 'light'
+      }
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    }
+
+    const theme = getThemePreference()
+
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark')
+    }
+
+    localStorage.setItem('theme', theme)
+  })()
+</script>

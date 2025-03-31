@@ -1,0 +1,23 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+type Props = HTMLAttributes<'div'>
+
+const { class: className, ...props } = Astro.props
+---
+
+<div
+  class:list={[
+    'rounded-lg border-l-4 border-green-500 bg-green-50 p-3 dark:bg-green-900/30',
+    className,
+  ]}
+  {...props}
+>
+  <slot />
+</div>
+
+<style>
+  div > p {
+    margin-block: 0 !important;
+  }
+</style>

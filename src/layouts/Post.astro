@@ -1,0 +1,25 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import BaseHead from '@ui/BaseHead.astro'
+import Header from '@ui/blocks/Header.astro'
+import MobileNavigation from '@ui/blocks/MobileNavigation.astro'
+import Prose from '@ui/Prose.astro'
+
+const { title, description } = Astro.props
+---
+
+<html lang="es">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+
+  <body class="min-h-screen grid-rows-[auto_1fr_auto]">
+    <Header />
+    <main class="@container/main flex items-center justify-center">
+      <Prose>
+        <slot />
+      </Prose>
+    </main>
+    <MobileNavigation />
+  </body>
+</html>
