@@ -13,18 +13,21 @@ import MobileNavigation from '@/components/blocks/MobileNavigation.astro'
   <body class="grid h-screen grid-rows-3">
     <Header />
     <main class="@container/main flex h-full w-full flex-col items-center justify-center">
-      <section class="flex h-[80vh] w-full items-center justify-center p-8 md:p-12 lg:p-14">
+      <section class="flex h-[80vh] w-full items-center justify-center p-4">
         <div class="prose dark:prose-invert prose-w flex flex-col gap-8 text-center">
           <span class="text-2xl font-bold md:text-4xl lg:text-5xl">
             ¡Hey! Soy <strong>Dantz</strong> 🖖
           </span>
-          <p class="mt-0 mb-0 text-base md:text-lg">
-            Me dedico a crear soluciones simples a problemas complejos. Comparto conocimientos sobre
-            arquitectura cloud, diseño de software y liderazgo. <span class="block">🇻🇪 🇲🇽</span>
+          <p class="mt-0 mb-0 max-w-prose text-base md:text-lg">
+            Me dedico a crear soluciones simples a problemas complejos. <span
+              class="hidden md:block"
+              >Comparto conocimientos sobre arquitectura cloud y desarrollo de software</span
+            >
+            <span class="block md:hidden">🇻🇪 🇲🇽</span>
           </p>
 
           <p class="mt-0 mb-0 text-sm md:text-base">
-            Actualmente <em>DevOps Engineer</em> en
+            Actualmente <strong>DevOps Engineer</strong> en
             <a
               href="https://hanufit.com/"
               class="hover:text-primary underline decoration-dotted underline-offset-4"
