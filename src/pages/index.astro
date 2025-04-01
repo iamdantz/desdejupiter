@@ -13,29 +13,19 @@ import MobileNavigation from '@/components/blocks/MobileNavigation.astro'
   <body class="grid h-screen grid-rows-3">
     <Header />
     <main class="@container/main flex h-full w-full flex-col items-center justify-center">
-      <section class="flex h-[80vh] w-full items-center justify-center p-8">
-        <div class="prose dark:prose-invert prose-w flex flex-col gap-8 text-center">
-          <span class="text-2xl font-bold md:text-4xl lg:text-5xl">
-            ¡Hey! Soy <strong>Dantz</strong> 🖖
-          </span>
-          <p class="mt-0 mb-0 max-w-prose text-base md:text-lg">
-            Me dedico a crear soluciones simples a problemas complejos. <span
-              class="hidden md:block"
-              >Comparto conocimientos sobre arquitectura cloud y desarrollo de software</span
-            >
-            <span class="block md:hidden">🇻🇪 🇲🇽</span>
-          </p>
-
-          <p class="mt-0 mb-0 text-sm md:text-base">
-            Actualmente <strong>DevOps Engineer</strong> en
-            <a
-              href="https://hanufit.com/"
-              class="hover:text-primary underline decoration-dotted underline-offset-4"
-              target="_blank"
-            >
-              HANU
-            </a>
-          </p>
+      <section class="flex h-[80vh] w-full items-center justify-center p-4 md:p-0">
+        <div class="prose dark:prose-invert prose-w flex flex-col text-center">
+          <h3 class="text-2xl font-bold text-zinc-900 md:text-4xl lg:text-5xl dark:text-slate-50">
+            ¡Hey! Soy <strong class="text-primary">Dantz</strong> 🖖
+          </h3>
+          <div>
+            <p class="text-base md:text-lg">
+              Me dedico a crear soluciones simples a problemas complejos
+            </p>
+            <p class="hidden text-base md:block md:text-lg">
+              Comparto conocimientos sobre arquitectura cloud y desarrollo de software
+            </p>
+          </div>
 
           <div class="flex flex-col items-center justify-center gap-4 text-lg md:flex-row">
             <a
@@ -44,6 +34,19 @@ import MobileNavigation from '@/components/blocks/MobileNavigation.astro'
             >
               <span>Conectar</span>
             </a>
+          </div>
+          <div>
+            <p class="text-xs opacity-95 md:text-sm">
+              Actualmente <strong>DevOps Engineer</strong> en
+              <a
+                href="https://hanufit.com/"
+                class="hover:text-primary underline decoration-dotted underline-offset-4"
+                target="_blank"
+              >
+                HANU
+              </a>
+            </p>
+            <span class="block">🇻🇪 🇲🇽</span>
           </div>
         </div>
       </section>
