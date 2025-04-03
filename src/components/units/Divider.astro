@@ -13,9 +13,9 @@ const { class: className, text = '', ...props } = Astro.props
   class:list={['flex items-center', text ? 'space-x-4' : 'space-x-0', className]}
   {...props}
 >
-  <hr />
-  <span class="text-sm text-neutral-500 dark:text-neutral-400">{text}</span>
-  <hr />
+  <hr class="text-border" />
+  <span class="text-muted-foreground text-sm">{text}</span>
+  <hr class="text-border" />
 </figure>
 
 <style>

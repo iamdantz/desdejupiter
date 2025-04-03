@@ -1,0 +1,75 @@
+---
+import { getCollection } from 'astro:content'
+import BaseHead from '@ui/BaseHead.astro'
+import Header from '@ui/blocks/Header.astro'
+import BlogCard from '@ui/units/BlogCard.astro'
+import MobileNavigation from '@ui/blocks/MobileNavigation.astro'
+import Pagination from '@ui/units/Pagination.astro'
+import { SITE_TITLE, SITE_DESCRIPTION, POSTS_PER_PAGE } from '@/consts'
+
+const posts = (await getCollection('blog')).sort((a, b) => {
+  const dateA = a.data.updatedDate?.valueOf() || a.data.pubDate.valueOf()
+  const dateB = b.data.updatedDate?.valueOf() || b.data.pubDate.valueOf()
+
+  return dateB - dateA
+})
+
+const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE)
+const currentPage = 1
+
+const paginatedPosts = posts.slice(0, POSTS_PER_PAGE)
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <main
+      class="mb-24 flex h-full max-h-full min-h-[100vh] flex-col items-center justify-center gap-8 px-8 py-4 md:mb-0 md:py-0 lg:px-0"
+    >
+      <section class="border-border flex w-full items-center justify-between border-b pb-4">
+        <h2 class="font-bold md:text-xl lg:text-2xl">Artículos Recientes</h2>
+
+        <!-- <div class="flex items-center rounded-lg bg-neutral-100 p-1 dark:bg-neutral-800">
+          <button
+            id="show-all"
+            class="rounded-md bg-white px-3 py-1 text-sm font-medium shadow-sm dark:bg-neutral-700 dark:text-white"
+            data-filter="all"
+          >
+            Todos
+          </button>
+          <button
+            id="show-blog"
+            class="px-3 py-1 text-sm font-medium text-neutral-600 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white"
+            data-filter="blog"
+          >
+            Blog
+          </button>
+          <button
+            id="show-laboratory"
+            class="px-3 py-1 text-sm font-medium text-neutral-600 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white"
+            data-filter="laboratory"
+          >
+            Laboratorio
+          </button>
+        </div> -->
+      </section>
+      <section class="grid grid-cols-1 gap-4 md:grid-cols-2 md:grid-rows-3 lg:grid-cols-3">
+        {paginatedPosts.map((post) => <BlogCard post={post} />)}
+      </section>
+      <section class="h-fit w-full">
+        {totalPages > 1 && <Pagination currentPage={currentPage} totalPages={totalPages} />}
+      </section>
+    </main>
+    <MobileNavigation />
+  </body>
+</html>
+
+<style>
+  section {
+    max-width: var(--container-4xl);
+  }
+</style>

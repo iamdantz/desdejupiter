@@ -6,7 +6,7 @@ export const SITE_DESCRIPTION = 'Me dedico a crear soluciones simples a problema
 
 export const MENU = [
     { title: 'Inicio', url: '/', icon: 'hugeicons:home-03', active: true },
-    { title: 'Blog', url: '#', icon: 'hugeicons:quill-write-02', active: true },
+    { title: 'Blog', url: '/blog', icon: 'hugeicons:quill-write-02', active: true },
     { title: 'Perfil', url: '/about', icon: 'hugeicons:quill-write-02', active: true },
     { title: 'Contacto', url: 'https://www.linkedin.com/in/heydantz/', icon: 'hugeicons:mail-02', active: true },
 ];
@@ -19,3 +19,6 @@ export const SOCIALS = [
     },
     { platform: 'GitHub', url: 'https://github.com/heydantz', icon: 'hugeicons:github-01' },
   ];
+
+export const POSTS_PER_PAGE = 9;
+export const BLOG_URL = '/blog';

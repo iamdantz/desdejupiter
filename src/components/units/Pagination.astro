@@ -1,0 +1,72 @@
+---
+const { currentPage, totalPages } = Astro.props
+import { BLOG_URL } from '@/consts'
+
+const pages = Array.from({ length: totalPages }, (_, i) => i + 1)
+
+const prev = currentPage > 1 ? `${BLOG_URL}/${currentPage - 1}` : null
+const next = currentPage < totalPages ? `${BLOG_URL}/${currentPage + 1}` : null
+const first = `${BLOG_URL}/1`
+const last = `${BLOG_URL}/${totalPages}`
+const notAllowedBack = currentPage === 1 ? 'cursor-not-allowed' : ''
+const notAllowedNext = currentPage === totalPages ? 'cursor-not-allowed' : ''
+---
+
+<nav class="flex justify-center">
+  <ul class="flex items-center gap-1">
+    <li>
+      <a href={first} class:list={[notAllowedBack]}>
+        <span>«</span>
+      </a>
+    </li>
+
+    <li>
+      <a href={prev || '#'} class:list={[notAllowedBack]}>
+        <span>‹</span>
+      </a>
+    </li>
+
+    {
+      pages.map((page) => (
+        <li>
+          <a
+            href={`${BLOG_URL}/${page === 1 ? '' : page}`}
+            class:list={[currentPage === page ? '!border-primary !bg-primary font-medium' : '']}
+          >
+            {page}
+          </a>
+        </li>
+      ))
+    }
+
+    <li>
+      <a href={next || '#'} class:list={[notAllowedNext]}>
+        <span>›</span>
+      </a>
+    </li>
+
+    <li>
+      <a href={last} class:list={[notAllowedNext]}>
+        <span>»</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<style>
+  a {
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--color-border);
+    display: flex;
+    width: 2.5rem;
+    height: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.25rem;
+  }
+
+  a:hover {
+    filter: brightness(1.05);
+  }
+</style>

@@ -34,6 +34,8 @@
 	--color-primary-950: oklch(14.602% 0.03107 73.213);
 
 	--color-fill: var(--color-slate-50);
+	--color-border: var(--color-gray-300);
+	--color-muted-foreground: var(--color-neutral-500);
 	--font-sans: 'Rubik', sans-serif;
 	--font-mono: 'Roboto Mono', monospace;
 
@@ -66,6 +68,8 @@
 		--color-primary-950: oklch(25.744% 0.06132 56.09);
 
 		--color-fill: var(--color-zinc-800);
+		--color-border: var(--color-zinc-700);
+		--color-muted-foreground: var(--color-neutral-400);
 
 		color: var(--color-slate-50);
 	}
@@ -92,7 +96,5 @@
 	  text-wrap : nowrap ;
 	}
   
-	blockquote {
-	  font-weight : 400 ;
-	}
+
 }
