@@ -1,11 +1,13 @@
 ---
 import { getCollection } from 'astro:content'
+import { Image } from 'astro:assets'
 import BaseHead from '@ui/BaseHead.astro'
 import Header from '@ui/blocks/Header.astro'
 import BlogCard from '@ui/units/BlogCard.astro'
 import MobileNavigation from '@ui/blocks/MobileNavigation.astro'
 import Pagination from '@ui/units/Pagination.astro'
 import { SITE_TITLE, SITE_DESCRIPTION, POSTS_PER_PAGE } from '@/consts'
+import placeholder from '../../assets/astro.svg'
 
 const posts = (await getCollection('blog')).sort((a, b) => {
   const dateA = a.data.updatedDate?.valueOf() || a.data.pubDate.valueOf()
@@ -57,8 +59,16 @@ const paginatedPosts = posts.slice(0, POSTS_PER_PAGE)
           </button>
         </div> -->
       </section>
+      {
+        paginatedPosts.length === 0 && (
+          <section class="flex flex-col items-center justify-center">
+            <Image src={placeholder} alt={''} />
+            <span>:( Aún no hay contenido disponible...</span>
+          </section>
+        )
+      }
       <section class="grid grid-cols-1 gap-4 md:grid-cols-2 md:grid-rows-3 lg:grid-cols-3">
-        {paginatedPosts.map((post) => <BlogCard post={post} />)}
+        {paginatedPosts.length > 0 && paginatedPosts.map((post) => <BlogCard post={post} />)}
       </section>
       <section class="h-fit w-full">
         {totalPages > 1 && <Pagination currentPage={currentPage} totalPages={totalPages} />}
