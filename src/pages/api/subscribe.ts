@@ -1,5 +1,7 @@
 import type { APIRoute } from 'astro';
 
+export const prerender = false;
+
 const BROWSERLESS_TOKEN = process.env.BROWSERLESS_TOKEN;
 const SUBSTACK_BASE = 'https://desdejupiter.substack.com';
 
