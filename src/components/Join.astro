@@ -82,18 +82,32 @@
     submitButton.innerHTML = '<span class="loading loading-spinner loading-sm"></span> Suscribiendo...';
 
     try {
-      const response = await fetch('/api/subscribe', {
+      const pageUrl = 'https://desdejupiter.substack.com/subscribe';
+      
+      const requestBody = {
+        first_url: pageUrl,
+        first_referrer: '',
+        current_url: pageUrl,
+        current_referrer: '',
+        first_session_url: pageUrl,
+        first_session_referrer: '',
+        referral_code: '',
+        source: 'subscribe_page',
+        referring_pub_id: '',
+        additional_referring_pub_ids: '',
+        email: email,
+      };
+
+      const response = await fetch('/substack-proxy/api/v1/free', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify(requestBody),
       });
 
-      const data = await response.json();
-
       if (response.ok) {
-        showSuccess(data.message || '✓ ¡Suscrito! Revisa tu email para confirmar.');
+        showSuccess('✓ ¡Suscrito! Revisa tu email para confirmar.');
         emailInput.value = '';
 
         setTimeout(() => {
@@ -101,7 +115,14 @@
           updateButtonState();
         }, 5000);
       } else {
-        throw new Error(data.error || 'Error al suscribir');
+        const errorText = await response.text();
+        
+        // Manejar caso de ya suscrito
+        if (errorText.includes('already subscribed') || errorText.includes('ya suscrito')) {
+          showSuccess('Ya estás suscrito');
+        } else {
+          throw new Error('Error al suscribir');
+        }
       }
     } catch (error) {
       showError(
