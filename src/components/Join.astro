@@ -7,7 +7,12 @@
       class="input join-item flex-1"
       autocomplete="email"
     />
-    <button type="submit" class="btn btn-primary text-base-content join-item" id="submit-btn" disabled>
+    <button
+      type="submit"
+      class="btn btn-primary text-base-content join-item"
+      id="submit-btn"
+      disabled
+    >
       Suscribirse
     </button>
   </form>
@@ -16,19 +21,29 @@
 </div>
 
 <script>
-  const form = document.getElementById('newsletter-form') as HTMLFormElement;
-  const emailInput = document.getElementById('email-input') as HTMLInputElement;
-  const validationError = document.getElementById('validation-error') as HTMLParagraphElement;
-  const submitButton = document.getElementById('submit-btn') as HTMLButtonElement;
+  const form = document.getElementById("newsletter-form") as HTMLFormElement;
+  const emailInput = document.getElementById("email-input") as HTMLInputElement;
+  const validationError = document.getElementById(
+    "validation-error"
+  ) as HTMLParagraphElement;
+  const submitButton = document.getElementById(
+    "submit-btn"
+  ) as HTMLButtonElement;
 
   const validateEmail = (email: string): { valid: boolean; error?: string } => {
-    if (!email || email.trim() === '') {
-      return { valid: false, error: 'Por favor, ingresa tu correo electrónico' };
+    if (!email || email.trim() === "") {
+      return {
+        valid: false,
+        error: "Por favor, ingresa tu correo electrónico",
+      };
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      return { valid: false, error: 'Por favor, ingresa un correo electrónico válido' };
+      return {
+        valid: false,
+        error: "Por favor, ingresa un correo electrónico válido",
+      };
     }
 
     return { valid: true };
@@ -36,41 +51,41 @@
 
   const updateButtonState = () => {
     const email = emailInput.value.trim();
-    submitButton.disabled = email === '';
+    submitButton.disabled = email === "";
   };
 
   const showError = (message: string) => {
     validationError.textContent = message;
-    validationError.classList.remove('hidden', 'text-success');
-    validationError.classList.add('text-error');
-    emailInput.classList.add('input-error');
+    validationError.classList.remove("hidden", "text-success");
+    validationError.classList.add("text-error");
+    emailInput.classList.add("input-error");
   };
 
   const showSuccess = (message: string) => {
     validationError.textContent = message;
-    validationError.classList.remove('hidden', 'text-error');
-    validationError.classList.add('text-success');
-    emailInput.classList.remove('input-error');
+    validationError.classList.remove("hidden", "text-error");
+    validationError.classList.add("text-success");
+    emailInput.classList.remove("input-error");
   };
 
   const clearError = () => {
-    validationError.classList.add('hidden');
-    validationError.classList.remove('text-error', 'text-success');
-    emailInput.classList.remove('input-error');
+    validationError.classList.add("hidden");
+    validationError.classList.remove("text-error", "text-success");
+    emailInput.classList.remove("input-error");
   };
 
-  emailInput.addEventListener('input', () => {
+  emailInput.addEventListener("input", () => {
     updateButtonState();
     clearError();
   });
 
   updateButtonState();
 
-  form.addEventListener('submit', async (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    
+
     const email = emailInput.value.trim();
-    
+
     const validation = validateEmail(email);
     if (!validation.valid) {
       showError(validation.error!);
@@ -79,36 +94,39 @@
 
     clearError();
     submitButton.disabled = true;
-    submitButton.innerHTML = '<span class="loading loading-spinner loading-sm"></span> Suscribiendo...';
+    submitButton.innerHTML =
+      '<span class="loading loading-spinner loading-sm"></span> Suscribiendo...';
 
     try {
-      const pageUrl = 'https://desdejupiter.substack.com/subscribe';
-      
+      const pageUrl = "https://desdejupiter.substack.com/subscribe";
+
       const requestBody = {
         first_url: pageUrl,
-        first_referrer: '',
+        first_referrer: "",
         current_url: pageUrl,
-        current_referrer: '',
+        current_referrer: "",
         first_session_url: pageUrl,
-        first_session_referrer: '',
-        referral_code: '',
-        source: 'subscribe_page',
-        referring_pub_id: '',
-        additional_referring_pub_ids: '',
+        first_session_referrer: "",
+        referral_code: "",
+        source: "subscribe_page",
+        referring_pub_id: "",
+        additional_referring_pub_ids: "",
         email: email,
       };
 
-      const response = await fetch('/substack-proxy/api/v1/free', {
-        method: 'POST',
+      const response = await fetch("/substack-proxy/api/v1/free", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
+        credentials: "include",
+        mode: "cors",
         body: JSON.stringify(requestBody),
       });
 
       if (response.ok) {
-        showSuccess('✓ ¡Suscrito! Revisa tu email para confirmar.');
-        emailInput.value = '';
+        showSuccess("✓ ¡Suscrito! Revisa tu email para confirmar.");
+        emailInput.value = "";
 
         setTimeout(() => {
           clearError();
@@ -116,21 +134,24 @@
         }, 5000);
       } else {
         const errorText = await response.text();
-        if (errorText.includes('already subscribed') || errorText.includes('ya suscrito')) {
-          showSuccess('Ya estás suscrito');
+        if (
+          errorText.includes("already subscribed") ||
+          errorText.includes("ya suscrito")
+        ) {
+          showSuccess("Ya estás suscrito");
         } else {
-          throw new Error('Error al suscribir');
+          throw new Error("Error al suscribir");
         }
       }
     } catch (error) {
       showError(
-        error instanceof Error 
-          ? error.message 
-          : 'Error de conexión. Por favor, intenta nuevamente.'
+        error instanceof Error
+          ? error.message
+          : "Error de conexión. Por favor, intenta nuevamente."
       );
     } finally {
       submitButton.disabled = false;
-      submitButton.textContent = 'Suscribirse';
+      submitButton.textContent = "Suscribirse";
       updateButtonState();
     }
   });
