@@ -114,13 +114,11 @@
         email: email,
       };
 
-      const response = await fetch("/substack-proxy/api/v1/free", {
+      const response = await fetch("/api/subscribe", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include",
-        mode: "cors",
         body: JSON.stringify(requestBody),
       });
 
@@ -133,14 +131,19 @@
           updateButtonState();
         }, 5000);
       } else {
-        const errorText = await response.text();
-        if (
-          errorText.includes("already subscribed") ||
-          errorText.includes("ya suscrito")
-        ) {
-          showSuccess("Ya estás suscrito");
+        let errBody = null;
+        try {
+          errBody = await response.json();
+        } catch (e) {
+          errBody = await response.text();
+        }
+
+        if (typeof errBody === 'string' && (errBody.includes('already subscribed') || errBody.includes('ya suscrito'))) {
+          showSuccess('Ya estás suscrito');
+        } else if (errBody && typeof errBody === 'object' && (errBody.details || errBody.message)) {
+          showError(errBody.details || errBody.message || 'Error al suscribir');
         } else {
-          throw new Error("Error al suscribir");
+          throw new Error('Error al suscribir');
         }
       }
     } catch (error) {

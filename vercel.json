@@ -3,10 +3,5 @@
   "outputDirectory": "dist",
   "devCommand": "npm run dev",
   "framework": "astro",
-  "rewrites": [
-    {
-      "source": "/substack-proxy/:path*",
-      "destination": "https://desdejupiter.substack.com/:path*"
-    }
-  ]
+  "rewrites": []
 }

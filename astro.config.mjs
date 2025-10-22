@@ -10,6 +10,7 @@ import vercel from "@astrojs/vercel";
 
 export default defineConfig({
   site: "https://desdejupiter.me",
+  output: 'server',
   adapter: vercel(),
   vite: {
     plugins: [tailwindcss()],
