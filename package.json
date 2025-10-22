@@ -6,11 +6,19 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "preview:vercel": "vercel dev",
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.6.0",
+    "@astrojs/vercel": "^8.2.11",
+    "@fontsource/nunito": "^5.2.7",
+    "@fontsource/poppins": "^5.2.7",
     "@tailwindcss/vite": "^4.1.13",
+    "@vercel/analytics": "^1.5.0",
     "astro": "^5.13.10",
+    "astro-robots": "^2.3.1",
+    "astro-seo": "^0.8.4",
     "daisyui": "^5.1.14",
     "tailwindcss": "^4.1.13"
   }
