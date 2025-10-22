@@ -116,8 +116,6 @@
         }, 5000);
       } else {
         const errorText = await response.text();
-        
-        // Manejar caso de ya suscrito
         if (errorText.includes('already subscribed') || errorText.includes('ya suscrito')) {
           showSuccess('Ya estás suscrito');
         } else {
